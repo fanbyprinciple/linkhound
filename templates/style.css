@@ -1,0 +1,151 @@
+:root {
+    --bs-primary: #FF6B6B; /* A vibrant coral/orange */
+    --bs-dark: #2c3e50;    /* A deep, modern charcoal blue */
+    --bs-light: #ecf0f1;   /* A soft off-white */
+    --bs-info: #4ECDC4;    /* A cool teal */
+    --bs-font-sans-serif: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    font-family: var(--bs-font-sans-serif);
+}
+
+.btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Puppy Logo in Navbar */
+.puppy-face-logo {
+    position: relative;
+    width: 30px;
+    height: 27px;
+    background-color: #d2a679;
+    border-radius: 50% 50% 40% 40%;
+    margin-right: 10px;
+    transform: translateY(2px);
+}
+.puppy-face-logo .ear-l, .puppy-face-logo .ear-r {
+    content: ''; position: absolute; width: 12px; height: 15px;
+    background-color: #8c5b3c; border-radius: 50% 50% 20% 20%; top: -4px; z-index: -1;
+}
+.puppy-face-logo .ear-l { left: -5px; transform: rotate(-25deg); }
+.puppy-face-logo .ear-r { right: -5px; transform: rotate(25deg); }
+.puppy-face-logo .eye-l, .puppy-face-logo .eye-r {
+    content: ''; position: absolute; width: 4px; height: 4px;
+    background-color: #2c2c2c; border-radius: 50%; top: 10px;
+}
+.puppy-face-logo .eye-l { left: 7px; }
+.puppy-face-logo .eye-r { right: 7px; }
+.puppy-face-logo .nose {
+    content: ''; position: absolute; width: 6px; height: 4px; background-color: #2c2c2c;
+    border-radius: 50% 50% 60% 60% / 30% 30% 80% 80%; top: 16px; left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Main input card styling */
+.card-title {
+    color: var(--bs-dark);
+}
+
+/* Stat Cards for Dashboard */
+.stat-card {
+    background-color: #fff;
+    border-radius: 0.75rem;
+    padding: 2rem 1rem;
+    border: 1px solid #e9ecef;
+}
+.stat-card h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--bs-dark);
+}
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    color: #fff;
+}
+.stat-icon.icon-primary { background-color: var(--bs-primary); }
+.stat-icon.icon-warning { background-color: var(--bs-warning); }
+.stat-icon.icon-success { background-color: var(--bs-success); }
+
+
+/* Puppy Loader Animation */
+.puppy-loader {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
+.puppy-loader-face {
+    position: absolute;
+    width: 100px;
+    height: 90px;
+    background-color: #d2a679;
+    border-radius: 50% 50% 40% 40%;
+    animation: bounce 1.5s infinite ease-in-out;
+}
+.puppy-loader-face .ear-l, .puppy-loader-face .ear-r, .puppy-loader-face .eye-l, .puppy-loader-face .eye-r, .puppy-loader-face .nose, .puppy-loader-face .tongue {
+    position: absolute; background-color: #2c2c2c; content: '';
+}
+.puppy-loader-face .ear-l, .puppy-loader-face .ear-r {
+    width: 40px; height: 55px; background-color: #8c5b3c; border-radius: 50% 50% 20% 20%; top: -12px; z-index: -1; animation: flop 1.5s infinite ease-in-out;
+}
+.puppy-loader-face .ear-l { left: -18px; transform-origin: top left; }
+.puppy-loader-face .ear-r { right: -18px; transform-origin: top right; }
+.puppy-loader-face .eye-l, .puppy-loader-face .eye-r { width: 12px; height: 12px; border-radius: 50%; top: 35px; }
+.puppy-loader-face .eye-l { left: 25px; }
+.puppy-loader-face .eye-r { right: 25px; }
+.puppy-loader-face .nose { width: 20px; height: 12px; border-radius: 50% 50% 60% 60% / 30% 30% 80% 80%; top: 55px; left: 50%; transform: translateX(-50%);}
+.puppy-loader-face .tongue {
+    width: 18px; height: 25px; background-color: #ef798a; border-radius: 0 0 10px 10px; top: 65px; z-index: -2;
+    left: 50%; transform: translateX(-50%); animation: pant 0.75s infinite ease-in-out;
+}
+.magnifying-glass {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border: 8px solid #3498db;
+    border-radius: 50%;
+    bottom: -10px;
+    right: -20px;
+    animation: search 1.5s infinite ease-in-out;
+}
+.magnifying-glass::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 30px;
+    background: #3498db;
+    transform: rotate(45deg);
+    bottom: -20px;
+    right: -10px;
+}
+
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+@keyframes flop { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(-15deg); } }
+@keyframes search { 0%, 100% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(-15deg) scale(1.1); } }
+@keyframes pant { 0%, 100% { height: 25px; } 50% { height: 30px; } }
+
+
+/* Results table and badges */
+.anchor-report { background: #f8f9fa; border-radius: 8px; padding: 20px; margin-top: 20px; }
+.text-type-badge { font-size: 0.8em; padding: 4px 10px; border-radius: 12px; }

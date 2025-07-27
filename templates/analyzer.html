@@ -47,11 +47,119 @@
             padding: 2px 8px;
             border-radius: 12px;
         }
+        /* Basic setup to center the puppy on the page */
+body {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #f2e8e0; /* A soft background color */
+}
+
+/* The main container for the face */
+.puppy-face {
+  position: relative;
+  width: 200px;
+  height: 180px;
+  background-color: #d2a679; /* Light brown fur */
+  border-radius: 50% 50% 40% 40%;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Creating the ears using pseudo-elements */
+.puppy-face::before,
+.puppy-face::after {
+  content: '';
+  position: absolute;
+  width: 80px;
+  height: 110px;
+  background-color: #8c5b3c; /* Darker brown for ears */
+  border-radius: 50% 50% 20% 20%;
+  top: -25px;
+  z-index: -1; /* Place ears behind the face */
+}
+
+/* Positioning the left ear */
+.puppy-face::before {
+  left: -35px;
+  transform: rotate(-25deg);
+}
+
+/* Positioning the right ear */
+.puppy-face::after {
+  right: -35px;
+  transform: rotate(25deg);
+}
+
+/* Common styling for both eyes */
+.eye-left,
+.eye-right {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: #2c2c2c; /* Dark gray for eyes */
+  border-radius: 50%;
+  top: 60px;
+}
+
+/* Position left eye */
+.eye-left {
+  left: 40px;
+}
+
+/* Position right eye */
+.eye-right {
+  right: 40px;
+}
+
+/* Adding a sparkle/highlight to the eyes using a pseudo-element */
+.eye-left::after,
+.eye-right::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  top: 5px;
+  left: 5px;
+}
+
+/* The nose */
+.nose {
+  position: absolute;
+  width: 40px;
+  height: 25px;
+  background-color: #2c2c2c; /* Dark gray for nose */
+  border-radius: 50% 50% 60% 60% / 30% 30% 80% 80%;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%); /* Center the nose */
+}
+
+/* The tongue */
+.tongue {
+  position: absolute;
+  width: 35px;
+  height: 40px;
+  background-color: #ef798a; /* Pink for tongue */
+  border-radius: 0 0 20px 20px;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%); /* Center the tongue */
+  z-index: -2; /* Place behind the nose */
+}
     </style>
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="mb-4 text-center">Website Link & Anchor Text Analyzer</h1>
+        <h1 class="mb-4 text-center">Linkhound</h1>
+        <div class="puppy-face">
+        <div class="eye-left"></div>
+        <div class="eye-right"></div>
+        <div class="nose"></div>
+        <div class="tongue"></div>
+        </div>
         <p class="text-center text-muted mb-5">Analyze redirect links and anchor text variations across your website</p>
         
         <!-- Configuration -->
@@ -67,11 +175,11 @@
                     </div>
                     <div class="col-md-2">
                         <input type="number" id="maxPages" class="form-control" 
-                               placeholder="Max pages" value="100" min="1" max="500">
+                               placeholder="Max pages" value="" min="1" max="500">
                     </div>
                     <div class="col-md-2">
                         <input type="number" id="maxDepth" class="form-control" 
-                               placeholder="Max depth" value="3" min="1" max="10">
+                               placeholder="Max depth" value="" min="1" max="10">
                     </div>
                     <div class="col-md-2">
                         <button id="startAnalysis" class="btn btn-primary w-100">Start Analysis</button>
